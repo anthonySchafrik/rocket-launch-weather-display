@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Rocket Launch Weather App</string>
+    <string name="base_placeholder_text">Enter</string>
+    <string name="search_weather">Search Weather</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+</resources>
