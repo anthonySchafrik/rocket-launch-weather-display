@@ -59,16 +59,17 @@ class GeocodingDataDisplayFragment: Fragment() {
             }
         }
 
-        weatherDataViewModel.weatherState.observe(viewLifecycleOwner) { weatherResponse ->
-            binding.tempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: "Temperature"
-            binding.apparentTempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: "Apparent Temperature"
-
-            if ( weatherResponse.data?.currently?.temperature != null) {
-                binding.tempTextViewText.visibility = View.VISIBLE
-                binding.apparentTempTextViewText.visibility = View.VISIBLE
-            }
-
-        }
+//        this needs to be moved to the weather display fragments
+//        weatherDataViewModel.weatherState.observe(viewLifecycleOwner) { weatherResponse ->
+//            binding.tempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: "Temperature"
+//            binding.apparentTempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: "Apparent Temperature"
+//
+//            if ( weatherResponse.data?.currently?.temperature != null) {
+//                binding.tempTextViewText.visibility = View.VISIBLE
+//                binding.apparentTempTextViewText.visibility = View.VISIBLE
+//            }
+//
+//        }
 
         // when you click away from the text field it clearFocus
         binding.root.setOnTouchListener { _, event ->
