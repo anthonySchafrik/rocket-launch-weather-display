@@ -14,25 +14,16 @@ class WeatherViewModel: ViewModel() {
     private val _weatherState = MutableLiveData(WeatherState())
     val weatherState: MutableLiveData<WeatherState> = _weatherState
 
-    private var passedInCity = false
-
     data class WeatherState(
         val isLoading: Boolean = true,
         val data: WeatherResponse? = null,
         val error: String? = null
     )
 
-    init {
-//        if (passedInCity) {
-//        fetchWeather()
-//        }
-    }
-
      fun fetchWeather(lat: String, lon: String) {
         viewModelScope.launch {
             try {
                 val response = WeatherService.getWeatherData(lat, lon)
-                println(">> response")
 
                 _weatherState.postValue(WeatherState(false, response, null))
 

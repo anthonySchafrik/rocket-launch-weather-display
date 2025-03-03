@@ -31,12 +31,6 @@ class WeatherDataDisplayFragment: Fragment() {
         weatherDataViewModel.weatherState.observe(viewLifecycleOwner) { weatherResponse ->
             binding.tempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: ""
             binding.apparentTempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: ""
-
-            if ( weatherResponse.data?.currently?.temperature != null) {
-//                binding.tempTextViewText.visibility = View.VISIBLE
-//                binding.apparentTempTextViewText.visibility = View.VISIBLE
-            }
-
         }
     }
 

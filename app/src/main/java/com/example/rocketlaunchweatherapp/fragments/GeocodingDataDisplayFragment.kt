@@ -23,7 +23,7 @@ class GeocodingDataDisplayFragment: Fragment() {
     private val binding get() = _binding!!
     private var city: String = ""
     private var state: String = ""
-//    private val weatherDataViewModel: WeatherViewModel by activityViewModels()  // Initialize ViewModel
+    private val weatherDataViewModel: WeatherViewModel by activityViewModels()  // Initialize ViewModel
     private val geocodingViewModel: GeocodingViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -53,10 +53,10 @@ class GeocodingDataDisplayFragment: Fragment() {
 
             println("geocodingViewModel observe ${geocodingResponse.data?.lat} ${geocodingResponse.data?.lon}")
             if (geocodingResponse.data?.lat != null && geocodingResponse.data?.lon != null) {
-//                weatherDataViewModel.fetchWeather(
-//                    geocodingResponse.data.lat.toString(),
-//                    geocodingResponse.data.lon.toString()
-//                )
+                weatherDataViewModel.fetchWeather(
+                    geocodingResponse.data.lat.toString(),
+                    geocodingResponse.data.lon.toString()
+                )
             }
         }
 
