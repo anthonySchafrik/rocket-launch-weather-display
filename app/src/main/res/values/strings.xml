@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">Rocket Launch Weather App</string>
+    <string name="app_name">Rocket Launch Weather</string>
     <string name="base_placeholder_text">Enter</string>
     <string name="search_weather">Search Weather</string>
     <string name="city">City</string>
     <string name="state">State</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="search_city">Search City</string>
+    <string name="current_gps">Current Gps</string>
+    <string name="temperature">Temperature</string>
+    <string name="apparent_temperature">Apparent Temperature</string>
 </resources>

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="@color/gray"
     android:padding="16dp">
 
     <!-- City and State Text -->
@@ -24,7 +23,7 @@
             android:id="@+id/selected_city_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="City"/>
+            android:text="@string/city"/>
 
         <Space
             android:layout_weight="1"
@@ -35,7 +34,7 @@
             android:id="@+id/selected_state_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="State"/>
+            android:text="@string/state"/>
 
         <Space
             android:layout_weight="1"
@@ -50,7 +49,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
         android:gravity="center"
         android:layout_marginBottom="16dp">
 
@@ -58,15 +56,14 @@
             android:id="@+id/lat_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="lat"/>
+            android:padding="8dp" />
 
         <TextView
             android:id="@+id/lon_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="lon"/>
+            android:text="@string/longitude"/>
     </LinearLayout>
 
     <!-- City and State Input Fields -->
@@ -74,7 +71,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
         android:gravity="center"
         android:layout_marginBottom="16dp">
 
@@ -83,6 +79,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:inputType="text"
             android:hint="@string/city"/>
 
@@ -91,15 +88,35 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:inputType="text"
             android:hint="@string/state"/>
     </LinearLayout>
 
     <!-- Search Button -->
-    <Button
-        android:id="@+id/selected_city_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/search_weather"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/selected_city_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_city"
+            android:layout_gravity="center"/>
+
+        <Space
+            android:layout_width="32dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/get_gps_location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_gps"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.rocketlaunchweatherapp.R
 import com.example.rocketlaunchweatherapp.databinding.GeocodingDataDisplayBinding
 import com.example.rocketlaunchweatherapp.toEditable
 import com.example.rocketlaunchweatherapp.viewmodels.GeocodingViewModel
@@ -22,7 +23,7 @@ class GeocodingDataDisplayFragment: Fragment() {
     private val binding get() = _binding!!
     private var city: String = ""
     private var state: String = ""
-    private val weatherDataViewModel: WeatherViewModel by activityViewModels()  // Initialize ViewModel
+//    private val weatherDataViewModel: WeatherViewModel by activityViewModels()  // Initialize ViewModel
     private val geocodingViewModel: GeocodingViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -44,32 +45,20 @@ class GeocodingDataDisplayFragment: Fragment() {
 
         // Observers
         geocodingViewModel.geocodingState.observe(viewLifecycleOwner) { geocodingResponse ->
-            binding.latTextView.text = geocodingResponse.data?.lat?.toString() ?: "Latitude"
-            binding.lonTextView.text = geocodingResponse.data?.lon?.toString() ?: "Longitude"
+            binding.latTextView.text = geocodingResponse.data?.lat?.toString() ?: getText(R.string.latitude)
+            binding.lonTextView.text = geocodingResponse.data?.lon?.toString() ?: getText(R.string.longitude)
 
             binding.selectedCityTextView.text = geocodingResponse.data?.name?.toEditable()
             binding.selectedStateTextView.text = geocodingResponse.data?.state?.toEditable()
 
             println("geocodingViewModel observe ${geocodingResponse.data?.lat} ${geocodingResponse.data?.lon}")
             if (geocodingResponse.data?.lat != null && geocodingResponse.data?.lon != null) {
-                weatherDataViewModel.fetchWeather(
-                    geocodingResponse.data.lat.toString(),
-                    geocodingResponse.data.lon.toString()
-                )
+//                weatherDataViewModel.fetchWeather(
+//                    geocodingResponse.data.lat.toString(),
+//                    geocodingResponse.data.lon.toString()
+//                )
             }
         }
-
-//        this needs to be moved to the weather display fragments
-//        weatherDataViewModel.weatherState.observe(viewLifecycleOwner) { weatherResponse ->
-//            binding.tempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: "Temperature"
-//            binding.apparentTempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: "Apparent Temperature"
-//
-//            if ( weatherResponse.data?.currently?.temperature != null) {
-//                binding.tempTextViewText.visibility = View.VISIBLE
-//                binding.apparentTempTextViewText.visibility = View.VISIBLE
-//            }
-//
-//        }
 
         // when you click away from the text field it clearFocus
         binding.root.setOnTouchListener { _, event ->
