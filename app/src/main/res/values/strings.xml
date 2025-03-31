@@ -10,4 +10,8 @@
     <string name="current_gps">Current Gps</string>
     <string name="temperature">Temperature</string>
     <string name="apparent_temperature">Apparent Temperature</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="wind_gust">Wind Gust</string>
+    <string name="wind_bearing">Wind Bearing</string>
+    <string name="daily_summary">Daily Summary</string>
 </resources>

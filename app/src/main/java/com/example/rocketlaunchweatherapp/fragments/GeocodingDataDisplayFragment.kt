@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.rocketlaunchweatherapp.MainActivity
 import com.example.rocketlaunchweatherapp.R
 import com.example.rocketlaunchweatherapp.databinding.GeocodingDataDisplayBinding
 import com.example.rocketlaunchweatherapp.toEditable
@@ -42,6 +43,7 @@ class GeocodingDataDisplayFragment: Fragment() {
         binding.selectedCityInput.addTextChangedListener { handleSelectCityInput(it) }
         binding.selectedStateInput.addTextChangedListener { handleSelectStateInput(it) }
         binding.selectedCityButton.setOnClickListener { handleCitySearch() }
+        binding.getGpsLocationButton.setOnClickListener { handleGetCurrentGps() }
 
         // Observers
         geocodingViewModel.geocodingState.observe(viewLifecycleOwner) { geocodingResponse ->
@@ -51,7 +53,6 @@ class GeocodingDataDisplayFragment: Fragment() {
             binding.selectedCityTextView.text = geocodingResponse.data?.name?.toEditable()
             binding.selectedStateTextView.text = geocodingResponse.data?.state?.toEditable()
 
-            println("geocodingViewModel observe ${geocodingResponse.data?.lat} ${geocodingResponse.data?.lon}")
             if (geocodingResponse.data?.lat != null && geocodingResponse.data?.lon != null) {
                 weatherDataViewModel.fetchWeather(
                     geocodingResponse.data.lat.toString(),
@@ -109,5 +110,11 @@ class GeocodingDataDisplayFragment: Fragment() {
 
         handleDisplaySelectedArea()
         handleClearSearchField()
+    }
+
+    private fun handleGetCurrentGps() {
+        (activity as? MainActivity)?.requestLocation { lat, lon ->
+            weatherDataViewModel.fetchWeather(lat, lon)
+        }
     }
 }

@@ -1,84 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="16dp">
 
-    <!-- Temp Text -->
-    <LinearLayout
-        android:id="@+id/temp_view_text"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"
-        tools:ignore="UselessParent">
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:paddingBottom="8dp"
+        android:text="@string/daily_summary" />
 
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/temperature"/>
-
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/apparent_temperature"/>
-
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-    </LinearLayout>
-
-    <!-- Temp Data -->
-    <LinearLayout
-        android:id="@+id/temp_data_text"
+    <TextView
+        android:id="@+id/daily_summary_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"
-        tools:ignore="UselessParent">
+        android:paddingBottom="8dp"/>
 
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="5"
+        android:padding="8dp"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false">
 
+        <!-- Headers -->
+        <TextView
+            android:text="@string/temperature"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@string/apparent_temperature"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- Temperature Values -->
         <TextView
             android:id="@+id/temp_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/apparent_temp_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+        <!-- Wind Speed Header -->
+        <TextView
+            android:text="@string/wind_speed"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+        <TextView
+            android:text="@string/wind_gust"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
+        <!-- Wind Speed Values -->
+        <TextView
+            android:id="@+id/wind_speed_text_view"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/wind_gust_text_view"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- Wind Bearing Header -->
+        <TextView
+            android:text="@string/wind_bearing"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- Wind Bearing Values -->
+        <TextView
+            android:id="@+id/wind_Bearing_text_view"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </GridLayout>
 
 </LinearLayout>

@@ -31,6 +31,10 @@ class WeatherDataDisplayFragment: Fragment() {
         weatherDataViewModel.weatherState.observe(viewLifecycleOwner) { weatherResponse ->
             binding.tempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: ""
             binding.apparentTempTextView.text = weatherResponse.data?.currently?.temperature?.toString() ?: ""
+            binding.windSpeedTextView.text = weatherResponse.data?.currently?.windSpeed?.toString() ?: ""
+            binding.windGustTextView.text = weatherResponse.data?.currently?.windGust?.toString() ?: ""
+            binding.windBearingTextView.text =  weatherResponse.data?.currently?.windBearing?.toString() ?: ""
+            binding.dailySummaryTextView.text = weatherResponse.data?.currently?.summary ?: ""
         }
     }
 
