@@ -102,7 +102,6 @@ class GeocodingDataDisplayFragment: Fragment() {
         binding.selectedStateTextView.text = state
     }
 
-
     @SuppressLint("SetTextI18n")
     private fun handleCitySearch() {
 //        geocodingViewModel.fetchCityStateData(city, state)
