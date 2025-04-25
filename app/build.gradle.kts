@@ -1,7 +1,28 @@
+import org.jetbrains.kotlin.codegen.intrinsics.ArrayOf
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
+
+fun getLocalProperty(key: String): String {
+    val properties = Properties()
+    val localPropertiesFile = rootProject.file("local.properties")
+
+    if (localPropertiesFile.exists()) {
+        FileInputStream(localPropertiesFile).use { stream ->
+            properties.load(stream)
+        }
+    } else {
+        throw GradleException("local.properties file not found")
+    }
+
+    return properties.getProperty(key) ?: ""
+}
+
+val envs = arrayOf("GEO_API_KEY", "WEATHER_API_KEY")
 
 android {
     namespace = "com.example.rocketlaunchweatherapp"
@@ -18,6 +39,14 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        fun loadEnvsAtBuildTime() {
+            envs.forEach { env ->
+                buildConfigField("String", env, "\"${getLocalProperty(env)}\"")
+            }
+        }
+
+        loadEnvsAtBuildTime()
     }
 
     buildTypes {
@@ -36,6 +65,7 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"

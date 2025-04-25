@@ -1,5 +1,6 @@
 package com.example.rocketlaunchweatherapp.api
 
+import com.example.rocketlaunchweatherapp.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -12,7 +13,7 @@ interface GeocodingApiService {
     suspend fun getCityCoordinates(
         @Query("q") city: String,
         @Query("limit") limit: Int = 1,
-        @Query("appid") apiKey: String = "ed90e52237cfd1c6e45a83d2c63a1a13"
+        @Query("appid") apiKey: String = BuildConfig.GEO_API_KEY
     ): List<GeocodingResponse>
 }
 

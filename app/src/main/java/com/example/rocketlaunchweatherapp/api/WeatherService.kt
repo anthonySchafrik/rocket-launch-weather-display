@@ -1,7 +1,7 @@
 package com.example.rocketlaunchweatherapp.api
 
+import com.example.rocketlaunchweatherapp.BuildConfig
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -188,7 +188,7 @@ data class LatLon(
     val lon: Double,
 )
 
-private const val BASE_URL = "https://api.pirateweather.net/forecast/EL2CpZtUx4LELVkR86Z8mZOsAKa6qGEw/"
+private const val BASE_URL = "https://api.pirateweather.net/forecast/${BuildConfig.WEATHER_API_KEY}/"
 
 interface WeatherApiService {
     @GET("{lat},{lon}")
