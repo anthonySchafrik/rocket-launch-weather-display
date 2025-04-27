@@ -6,12 +6,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://api.openweathermap.org/"
+private const val BASE_URL = "https://api.openweathermap.org/geo/1.0/"
 
 interface GeocodingApiService {
-    @GET("geo/1.0/direct")
+    @GET("direct")
     suspend fun getCityCoordinates(
         @Query("q") city: String,
+        @Query("limit") limit: Int = 1,
+        @Query("appid") apiKey: String = BuildConfig.GEO_API_KEY
+    ): List<GeocodingResponse>
+
+    @GET("reverse")
+    suspend fun getReverseGeo(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
         @Query("limit") limit: Int = 1,
         @Query("appid") apiKey: String = BuildConfig.GEO_API_KEY
     ): List<GeocodingResponse>

@@ -40,13 +40,9 @@ android {
             useSupportLibrary = true
         }
 
-        fun loadEnvsAtBuildTime() {
-            envs.forEach { env ->
-                buildConfigField("String", env, "\"${getLocalProperty(env)}\"")
-            }
+        envs.forEach { env ->
+            buildConfigField("String", env, "\"${getLocalProperty(env)}\"")
         }
-
-        loadEnvsAtBuildTime()
     }
 
     buildTypes {

@@ -47,17 +47,31 @@ class GeocodingDataDisplayFragment: Fragment() {
 
         // Observers
         geocodingViewModel.geocodingState.observe(viewLifecycleOwner) { geocodingResponse ->
-            binding.latTextView.text = geocodingResponse.data?.lat?.toString() ?: getText(R.string.latitude)
-            binding.lonTextView.text = geocodingResponse.data?.lon?.toString() ?: getText(R.string.longitude)
+            if (geocodingResponse.gpsGeo != null) {
+                binding.latTextView.text = geocodingResponse.gpsGeo.lat.toString()
+                binding.lonTextView.text = geocodingResponse.gpsGeo.lon.toString()
 
-            binding.selectedCityTextView.text = geocodingResponse.data?.name?.toEditable()
-            binding.selectedStateTextView.text = geocodingResponse.data?.state?.toEditable()
+                binding.selectedCityTextView.text = geocodingResponse.gpsGeo.name
+                binding.selectedStateTextView.text = geocodingResponse.gpsGeo.state
 
-            if (geocodingResponse.data?.lat != null && geocodingResponse.data?.lon != null) {
                 weatherDataViewModel.fetchWeather(
-                    geocodingResponse.data.lat.toString(),
-                    geocodingResponse.data.lon.toString()
+                    geocodingResponse.gpsGeo.lat.toString(),
+                    geocodingResponse.gpsGeo.lon.toString()
                 )
+
+            } else {
+                binding.latTextView.text = geocodingResponse.data?.lat?.toString() ?: getText(R.string.latitude)
+                binding.lonTextView.text = geocodingResponse.data?.lon?.toString() ?: getText(R.string.longitude)
+
+                binding.selectedCityTextView.text = geocodingResponse.data?.name?.toEditable()
+                binding.selectedStateTextView.text = geocodingResponse.data?.state?.toEditable()
+
+                if (geocodingResponse.data?.lat != null && geocodingResponse.data?.lon != null) {
+                    weatherDataViewModel.fetchWeather(
+                        geocodingResponse.data.lat.toString(),
+                        geocodingResponse.data.lon.toString()
+                    )
+                }
             }
         }
 
@@ -113,7 +127,7 @@ class GeocodingDataDisplayFragment: Fragment() {
 
     private fun handleGetCurrentGps() {
         (activity as? MainActivity)?.requestLocation { lat, lon ->
-            weatherDataViewModel.fetchWeather(lat, lon)
+            geocodingViewModel.fetchNameFormLatLon(lat, lon)
         }
     }
 }
