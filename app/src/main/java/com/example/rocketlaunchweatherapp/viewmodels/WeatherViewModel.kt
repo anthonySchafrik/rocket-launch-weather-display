@@ -1,9 +1,6 @@
 package com.example.rocketlaunchweatherapp.viewmodels
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rocketlaunchweatherapp.api.WeatherResponse
