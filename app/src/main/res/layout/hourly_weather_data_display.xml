@@ -184,9 +184,17 @@
         android:layout_height="wrap_content"
         android:text="Wind Gust" />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/wind_Bearing_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wind Bearing" />
+        android:text="Wind Bearing" /> -->
+
+      <ImageView
+        android:id="@+id/wind_bearing_arrow"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_arrow_upward"
+        android:contentDescription="@string/wind_bearing" />
+
 </LinearLayout>

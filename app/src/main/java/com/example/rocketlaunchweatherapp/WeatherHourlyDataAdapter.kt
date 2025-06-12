@@ -3,6 +3,7 @@ package com.example.rocketlaunchweatherapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rocketlaunchweatherapp.api.Daum2
@@ -15,7 +16,8 @@ class WeatherHourlyDataAdapter(private val items: List<Daum2>) : RecyclerView.Ad
         val apparentTempTextView: TextView = view.findViewById(R.id.apparent_temp_text_view)
         val windSpeedTextView: TextView = view.findViewById(R.id.wind_speed_text_view)
         val windGustTextView: TextView = view.findViewById(R.id.wind_gust_text_view)
-        val windBearingTextView: TextView = view.findViewById(R.id.wind_Bearing_text_view)
+        // val windBearingTextView: TextView = view.findViewById(R.id.wind_Bearing_text_view)
+        val windBearingArrow: ImageView = view.findViewById(R.id.wind_bearing_arrow)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,6 +28,7 @@ class WeatherHourlyDataAdapter(private val items: List<Daum2>) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
+        val bearing = item.windBearing ?: 0.0
 
         holder.hourlySummeryTextView.text = item.summary
         holder.hourlyTextView.text = convertTimestamp(items[position].time)
@@ -33,7 +36,8 @@ class WeatherHourlyDataAdapter(private val items: List<Daum2>) : RecyclerView.Ad
         holder.apparentTempTextView.text = items[position].apparentTemperature.toString()
         holder.windSpeedTextView.text = items[position].windSpeed.toString()
         holder.windGustTextView.text = items[position].windGust.toString()
-        holder.windBearingTextView.text = items[position].windBearing.toString()
+        // holder.windBearingTextView.text = items[position].windBearing.toString()
+        holder.windBearingArrow.rotation = ((bearing + 180) % 360).toFloat()
     }
 
     override fun getItemCount() = items.size
