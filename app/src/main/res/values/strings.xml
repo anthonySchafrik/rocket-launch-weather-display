@@ -14,4 +14,6 @@
     <string name="wind_gust">Wind Gust</string>
     <string name="wind_bearing">Wind Bearing</string>
     <string name="daily_summary">Daily Summary</string>
+    <string name="hourly_summary">Hourly Summary</string>
+    <string name="hour">Hour</string>
 </resources>
