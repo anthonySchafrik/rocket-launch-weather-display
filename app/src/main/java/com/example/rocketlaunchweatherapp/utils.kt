@@ -9,7 +9,7 @@ fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(
 
 fun convertTimestamp(timestamp: Long): String {
     val instant = Instant.ofEpochSecond(timestamp)
-    val formatter = DateTimeFormatter.ofPattern("h:mm:ss a")
+    val formatter = DateTimeFormatter.ofPattern("h a")
         .withZone(ZoneId.systemDefault())
 
     return formatter.format(instant)
