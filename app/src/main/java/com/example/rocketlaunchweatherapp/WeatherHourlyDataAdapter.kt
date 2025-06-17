@@ -36,6 +36,11 @@ class WeatherHourlyDataAdapter(private val items: List<Daum2>) : RecyclerView.Ad
         holder.windGustTextView.text = items[position].windGust.toString()
         holder.windBearingArrow.rotation = ((bearing + 180) % 360).toFloat()
 
+        val defaultColor = getThemeTextColor(holder.windSpeedTextView)
+
+        holder.windSpeedTextView.setTextColor(defaultColor)
+        holder.windGustTextView.setTextColor(defaultColor)
+
         if (items[position].windSpeed > SAFE_LAUNCH_WIND_SPEED) {
             holder.windSpeedTextView.setTextColor(Color.RED)
         }
