@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.rocketlaunchweatherapp.WeatherHourlyDataAdapter
-import com.example.rocketlaunchweatherapp.R
 import com.example.rocketlaunchweatherapp.databinding.WeatherDataDisplayBinding
 import com.example.rocketlaunchweatherapp.viewmodels.WeatherViewModel
 
@@ -34,6 +32,10 @@ class WeatherDataDisplayFragment: Fragment() {
 
         weatherDataViewModel.weatherState.observe(viewLifecycleOwner) { weatherResponse ->
             val hourlyData = weatherResponse.data?.hourly?.data ?: emptyList()
+
+            if (hourlyData.isNotEmpty()) {
+               println(">> isSafe => ${weatherDataViewModel.isWindsSafe()}")
+            }
 
             binding.horizontalRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             binding.horizontalRecyclerView.adapter = WeatherHourlyDataAdapter(hourlyData)

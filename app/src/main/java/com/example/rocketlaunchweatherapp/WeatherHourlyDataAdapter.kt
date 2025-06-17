@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rocketlaunchweatherapp.api.Daum2
 
@@ -15,7 +16,6 @@ class WeatherHourlyDataAdapter(private val items: List<Daum2>) : RecyclerView.Ad
         val tempTextView: TextView = view.findViewById(R.id.temp_text_view)
         val windSpeedTextView: TextView = view.findViewById(R.id.wind_speed_text_view)
         val windGustTextView: TextView = view.findViewById(R.id.wind_gust_text_view)
-        // val windBearingTextView: TextView = view.findViewById(R.id.wind_Bearing_text_view)
         val windBearingArrow: ImageView = view.findViewById(R.id.wind_bearing_arrow)
     }
 
@@ -34,8 +34,15 @@ class WeatherHourlyDataAdapter(private val items: List<Daum2>) : RecyclerView.Ad
         holder.tempTextView.text = items[position].temperature.toString()
         holder.windSpeedTextView.text = items[position].windSpeed.toString()
         holder.windGustTextView.text = items[position].windGust.toString()
-        // holder.windBearingTextView.text = items[position].windBearing.toString()
         holder.windBearingArrow.rotation = ((bearing + 180) % 360).toFloat()
+
+        if (items[position].windSpeed > SAFE_LAUNCH_WIND_SPEED) {
+            holder.windSpeedTextView.setTextColor(Color.RED)
+        }
+
+        if (items[position].windGust > SAFE_LAUNCH_WIND_SPEED) {
+            holder.windGustTextView.setTextColor(Color.RED)
+        }
     }
 
     override fun getItemCount() = items.size

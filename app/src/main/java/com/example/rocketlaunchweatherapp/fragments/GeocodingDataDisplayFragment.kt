@@ -119,7 +119,7 @@ class GeocodingDataDisplayFragment: Fragment() {
     @SuppressLint("SetTextI18n")
     private fun handleCitySearch() {
         geocodingViewModel.fetchCityStateData(city, state)
-//        geocodingViewModel.fetchCityStateData("bellevue", "nebraska")
+        // geocodingViewModel.fetchCityStateData("bellevue", "nebraska")
 
         handleDisplaySelectedArea()
         handleClearSearchField()

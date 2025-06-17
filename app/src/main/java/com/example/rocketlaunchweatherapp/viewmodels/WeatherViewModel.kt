@@ -3,6 +3,7 @@ package com.example.rocketlaunchweatherapp.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.rocketlaunchweatherapp.SAFE_LAUNCH_WIND_SPEED
 import com.example.rocketlaunchweatherapp.api.WeatherResponse
 import com.example.rocketlaunchweatherapp.api.WeatherService
 import kotlinx.coroutines.launch
@@ -30,5 +31,27 @@ class WeatherViewModel: ViewModel() {
                 _weatherState.postValue(WeatherState(false, null, e.message))
             }
         }
+    }
+
+    fun isWindsSafe(): Boolean {
+        var isSafe = true
+
+        if (
+            weatherState.value?.data?.currently?.windSpeed!! > SAFE_LAUNCH_WIND_SPEED ||
+            weatherState.value?.data?.currently?.windGust!! > SAFE_LAUNCH_WIND_SPEED
+            )
+        {
+            return false
+        }
+
+        for (it in weatherState.value?.data?.hourly?.data!!) {
+            if (it.windSpeed > SAFE_LAUNCH_WIND_SPEED || it.windGust > SAFE_LAUNCH_WIND_SPEED) {
+                isSafe = false
+
+                break // exits the loop
+            }
+        }
+
+        return isSafe
     }
 }
