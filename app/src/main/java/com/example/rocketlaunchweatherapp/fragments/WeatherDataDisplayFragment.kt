@@ -34,7 +34,8 @@ class WeatherDataDisplayFragment: Fragment() {
             val hourlyData = weatherResponse.data?.hourly?.data ?: emptyList()
 
             if (hourlyData.isNotEmpty()) {
-               println(">> isSafe => ${weatherDataViewModel.isWindsSafe()}")
+                println(">> isSafe => ${weatherDataViewModel.isCurrentWindsSafe()}")
+                println(">> weatherDataViewModel.isGoodLaunchDay() ${weatherDataViewModel.isGoodLaunchDay()}")
             }
 
             binding.horizontalRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

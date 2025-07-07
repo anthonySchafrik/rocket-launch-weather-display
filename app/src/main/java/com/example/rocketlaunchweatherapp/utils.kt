@@ -26,3 +26,11 @@ fun getThemeTextColor(view: View): Int {
 
     return view.context.getColor(typedValue.resourceId)
 }
+
+fun hoursBetweenTwoTimestamps(timestamp1: Long, timestamp2: Long): Double {
+    // Calculate time difference in hours
+    val diffInSeconds = Math.abs(timestamp2 - timestamp1)
+    val diffInHours = diffInSeconds / 3600.0
+
+    return diffInHours
+}
