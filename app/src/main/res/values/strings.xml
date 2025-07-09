@@ -18,4 +18,5 @@
     <string name="daily_summary">Daily Summary</string>
     <string name="hourly_summary">Hourly Summary</string>
     <string name="hour">Hour</string>
+    <string name="unsafe_hour">Unsafe Hour</string>
 </resources>

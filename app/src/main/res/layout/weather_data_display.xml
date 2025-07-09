@@ -7,6 +7,31 @@
     android:gravity="center_horizontal"
     android:padding="16dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <ImageView
+            android:id="@+id/current_hour_not_safe_icon_view"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/unsafe_hour"
+            android:visibility="invisible"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/daily_over_all_icon_view"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/unsafe_hour"
+            android:visibility="invisible"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
